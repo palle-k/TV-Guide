@@ -65,22 +65,29 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="396.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gXn-cw-Chf">
-                                                    <rect key="frame" x="8" y="36" width="359" height="338"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fic-ly-t8Y">
+                                                    <rect key="frame" x="24" y="24" width="327" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sCd-lW-Mt3">
+                                                    <rect key="frame" x="24" y="64" width="327" height="308.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fic-ly-t8Y">
-                                                    <rect key="frame" x="8" y="8" width="106" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Fic-ly-t8Y" secondAttribute="trailing" constant="16" id="3VN-sC-3xb"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="sCd-lW-Mt3" secondAttribute="bottom" constant="16" id="CJ9-vc-UOt"/>
+                                                <constraint firstItem="sCd-lW-Mt3" firstAttribute="leading" secondItem="2H4-A1-w0R" secondAttribute="leadingMargin" constant="16" id="ClI-dJ-8bH"/>
+                                                <constraint firstItem="Fic-ly-t8Y" firstAttribute="top" secondItem="2H4-A1-w0R" secondAttribute="topMargin" constant="16" id="OV6-U2-BDJ"/>
+                                                <constraint firstItem="Fic-ly-t8Y" firstAttribute="leading" secondItem="2H4-A1-w0R" secondAttribute="leadingMargin" constant="16" id="k7O-i9-Kd7"/>
+                                                <constraint firstItem="sCd-lW-Mt3" firstAttribute="top" secondItem="Fic-ly-t8Y" secondAttribute="bottom" constant="16" id="pas-eA-tlL"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="sCd-lW-Mt3" secondAttribute="trailing" constant="16" id="zdb-fJ-stW"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
