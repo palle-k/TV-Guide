@@ -14,9 +14,14 @@ class ViewFinderViewController: UIViewController {
     private var session: AVCaptureSession?
     private var capturePreviewLayer: AVCaptureVideoPreviewLayer?
     
-	override func viewDidLoad() {
+    @IBOutlet weak var instructionContainer: UIVisualEffectView!
+    
+    override func viewDidLoad() {
 		super.viewDidLoad()
-		
+        
+		instructionContainer.layer.cornerRadius = 10
+        instructionContainer.clipsToBounds = true
+        
         do {
             try self.initSession()
             session?.startRunning()
