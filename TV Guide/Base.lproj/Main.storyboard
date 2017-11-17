@@ -43,11 +43,6 @@
                                     <constraint firstAttribute="height" constant="50" id="8MA-xZ-p1D"/>
                                 </constraints>
                                 <blurEffect style="prominent"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -59,6 +54,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="instructionContainer" destination="Oxn-Zl-47V" id="5cr-QL-qY9"/>
                         <segue destination="glg-DW-pZ9" kind="presentation" identifier="presentStationInfo" id="asg-qf-KN3"/>
                     </connections>
                 </viewController>
