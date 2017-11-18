@@ -1,12 +1,16 @@
 
 import UIKit
+import Moya
+import Foundation
 
 class ProgramInfoTableViewController: UITableViewController {
     
+    // MOCK DATA
     private let startTimeHour: Int = 9
     private let startTimeMinute: Int = 36
     private let endTimeHour: Int = 9
     private let endTimeMinute: Int = 37
+    
     private var timer: Timer?
     
     @IBOutlet weak var timeProgressView: UIProgressView!
@@ -29,16 +33,38 @@ class ProgramInfoTableViewController: UITableViewController {
         }
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
-        let startString = dateFormatter.string(from: start)
-        let endString = dateFormatter.string(from: end)
-        
-        timeLabel.text = startString + " - " + endString
+        timeLabel.text = dateFormatter.string(from: start) + " - " + dateFormatter.string(from: end)
         timer  = Timer.scheduledTimer(timeInterval: 10,
                                       target: self,
                                       selector: #selector(self.updateTimeProgressView),
                                       userInfo: nil,
                                       repeats: true)
         updateTimeProgressView()
+        
+        //Query data
+        let provider = MoyaProvider<EPGService>(plugins: [NetworkLoggerPlugin(verbose: true)])
+        provider.request(
+			.epg(
+				selection: "{data{id,type,title,tvChannelName,startTime,endTime,genres{type,title,subType},images{url}}}",
+				limit: 10,
+				sortby: "title",
+                sortascending: false,
+				channelid: 1,
+                ids: "",
+                from: "2017-11-18",
+                to: "2017-11-18",
+                showrunning: true
+            )
+		){
+        switch $0 {
+			case let .success(moyaResponse):
+                break
+                print(String(data: moyaResponse.data, encoding: .utf8) ?? "")
+			case let .failure(error):
+				print(error)
+			}
+        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
