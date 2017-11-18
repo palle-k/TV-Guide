@@ -5,10 +5,12 @@ import Foundation
 
 class ProgramInfoTableViewController: UITableViewController {
     
+    // MOCK DATA
     private let startTimeHour: Int = 9
     private let startTimeMinute: Int = 36
     private let endTimeHour: Int = 9
     private let endTimeMinute: Int = 37
+    
     private var timer: Timer?
     
     @IBOutlet weak var timeProgressView: UIProgressView!
@@ -39,26 +41,25 @@ class ProgramInfoTableViewController: UITableViewController {
                                       repeats: true)
         updateTimeProgressView()
         
+        //Query data
         let provider = MoyaProvider<EPGService>(plugins: [NetworkLoggerPlugin(verbose: true)])
-        
         provider.request(
-			.now(
+			.epg(
 				selection: "{data{id,type,title,tvChannelName,startTime,endTime,genres{type,title,subType},images{url}}}",
 				limit: 10,
 				sortby: "title",
-				sortascending: false,
-				channelid: 1//,
-//                ids: "",
-//                from: "2017-11-18",
-//                to: "2017-11-18",
-//                showrunning: true
+                sortascending: false,
+				channelid: 1,
+                ids: "",
+                from: "2017-11-18",
+                to: "2017-11-18",
+                showrunning: true
             )
 		){
-			switch $0 {
+        switch $0 {
 			case let .success(moyaResponse):
                 break
                 print(String(data: moyaResponse.data, encoding: .utf8) ?? "")
-        
 			case let .failure(error):
 				print(error)
 			}
