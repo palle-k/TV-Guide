@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2E597A08823819DB078FEFEE /* Pods_TV_Guide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A46FA5497CD85A3A31CB059 /* Pods_TV_Guide.framework */; };
+		810B79011FC0375D003EB279 /* EPGService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810B79001FC0375D003EB279 /* EPGService.swift */; };
 		81B9F9F31FBFC9E5008C19DC /* ProgramInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B9F9F21FBFC9E5008C19DC /* ProgramInfoTableViewController.swift */; };
 		E66665D21FBF8A2300342BBC /* InfoView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E66665D11FBF8A2300342BBC /* InfoView.storyboard */; };
 		E66665D41FBF9BF200342BBC /* RectangleExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66665D31FBF9BF200342BBC /* RectangleExtractor.swift */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		10B37DC9024B6ED738FA51F8 /* Pods-TV Guide.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV Guide.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TV Guide/Pods-TV Guide.debug.xcconfig"; sourceTree = "<group>"; };
 		7A46FA5497CD85A3A31CB059 /* Pods_TV_Guide.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TV_Guide.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		810B79001FC0375D003EB279 /* EPGService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPGService.swift; sourceTree = "<group>"; };
 		81B9F9F21FBFC9E5008C19DC /* ProgramInfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramInfoTableViewController.swift; sourceTree = "<group>"; };
 		959A3A4887B9555FFD9F3574 /* Pods-TV Guide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV Guide.release.xcconfig"; path = "Pods/Target Support Files/Pods-TV Guide/Pods-TV Guide.release.xcconfig"; sourceTree = "<group>"; };
 		E66665D11FBF8A2300342BBC /* InfoView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InfoView.storyboard; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				E6B59B2E1FBF808E00544FFF /* Assets.xcassets */,
 				E6B59B301FBF808E00544FFF /* LaunchScreen.storyboard */,
 				E6B59B331FBF808E00544FFF /* Info.plist */,
+				810B79001FC0375D003EB279 /* EPGService.swift */,
 			);
 			path = "TV Guide";
 			sourceTree = "<group>";
@@ -208,9 +211,18 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TV Guide/Pods-TV Guide-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -227,6 +239,7 @@
 				E6B59B2A1FBF808E00544FFF /* ViewFinderViewController.swift in Sources */,
 				E66665D41FBF9BF200342BBC /* RectangleExtractor.swift in Sources */,
 				81B9F9F31FBFC9E5008C19DC /* ProgramInfoTableViewController.swift in Sources */,
+				810B79011FC0375D003EB279 /* EPGService.swift in Sources */,
 				E6B59B281FBF808E00544FFF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
