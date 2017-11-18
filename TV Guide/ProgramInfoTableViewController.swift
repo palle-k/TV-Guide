@@ -42,29 +42,30 @@ class ProgramInfoTableViewController: UITableViewController {
         
         let provider = MoyaProvider<EPGService>()
        
-        provider.request(.now(key: "13cf7f8f841768c2666b183a5621ff01",
-                              selection: "{data{id,type,title,tvChannelName,startTime,endTime,genres{type,title,subType},images{url}}}",
-                              limit: 10,
-                              sortby: "title",
-                              sortascending: false,
-                              channelid: 1
-                        ),
-                         completion: {
-                            switch $0 {
-                            case let .success(moyaResponse):
-                               
-                                let statusCode = moyaResponse.statusCode
-                                do {
-                                    try moyaResponse.filterSuccessfulStatusCodes()
-                                    let data = try moyaResponse.mapJSON()
-                                }
-                                catch {
-                                    
-                                }
-                            case let .failure(error):
-                                print(error)
-                            }
-        })
+        provider.request(
+			.now(
+				selection: "{data{id,type,title,tvChannelName,startTime,endTime,genres{type,title,subType},images{url}}}",
+				limit: 10,
+				sortby: "title",
+				sortascending: false,
+				channelid: 1
+			)
+		){
+			switch $0 {
+			case let .success(moyaResponse):
+				print(String(data: moyaResponse.data, encoding: .utf8) ?? "")
+//				let statusCode = moyaResponse.statusCode
+//				do {
+//					try moyaResponse.filterSuccessfulStatusCodes()
+//					let data = try moyaResponse.mapJSON()
+//				}
+//				catch {
+//
+//				}
+			case let .failure(error):
+				print(error)
+			}
+        }
         
         
     }
