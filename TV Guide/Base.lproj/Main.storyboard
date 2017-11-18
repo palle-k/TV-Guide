@@ -44,16 +44,27 @@
                                 </constraints>
                                 <blurEffect style="prominent"/>
                             </visualEffectView>
+                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oov-0q-dlu">
+                                <rect key="frame" x="16" y="409" width="343" height="180"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="H41-mn-hLe"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oov-0q-dlu" secondAttribute="trailing" constant="16" id="4SX-Bf-TZH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Oxn-Zl-47V" secondAttribute="trailing" constant="16" id="IWC-tC-hH5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Oxn-Zl-47V" secondAttribute="bottom" constant="20" id="Ko9-fg-vew"/>
                             <constraint firstItem="Oxn-Zl-47V" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="QgD-R1-8Jt"/>
+                            <constraint firstItem="oov-0q-dlu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="U0I-fK-TdO"/>
+                            <constraint firstItem="Oxn-Zl-47V" firstAttribute="top" secondItem="oov-0q-dlu" secondAttribute="bottom" constant="8" id="mAh-xF-MES"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="extractedRectangleImage" destination="oov-0q-dlu" id="MjH-ta-yVz"/>
                         <outlet property="instructionContainer" destination="Oxn-Zl-47V" id="5cr-QL-qY9"/>
                         <segue destination="glg-DW-pZ9" kind="presentation" identifier="presentStationInfo" id="asg-qf-KN3"/>
                     </connections>

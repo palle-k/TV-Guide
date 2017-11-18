@@ -13,14 +13,26 @@ class ViewFinderViewController: UIViewController {
 
     private var session: AVCaptureSession?
     private var capturePreviewLayer: AVCaptureVideoPreviewLayer?
+	private var shapeLayer: CAShapeLayer!
+	
+	private var rectangleExtractor = RectangleExtractor()
     
     @IBOutlet weak var instructionContainer: UIVisualEffectView!
-    
-    override func viewDidLoad() {
+	@IBOutlet weak var extractedRectangleImage: UIImageView!
+	
+	override func viewDidLoad() {
 		super.viewDidLoad()
         
 		instructionContainer.layer.cornerRadius = 10
         instructionContainer.clipsToBounds = true
+		
+		shapeLayer = CAShapeLayer()
+		shapeLayer.frame = view.bounds
+		shapeLayer.strokeColor = UIColor(red: 0.2, green: 0.5, blue: 1.0, alpha: 0.5).cgColor
+		shapeLayer.fillColor = UIColor.clear.cgColor
+		shapeLayer.lineJoin = kCALineJoinRound
+		shapeLayer.lineWidth = 10.0
+		view.layer.addSublayer(shapeLayer)
         
         do {
             try self.initSession()
@@ -44,6 +56,7 @@ class ViewFinderViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         capturePreviewLayer?.frame = self.view.bounds
+		shapeLayer?.frame = view.bounds
     }
     
     private func initSession() throws {
@@ -75,8 +88,44 @@ class ViewFinderViewController: UIViewController {
         self.session = session
         self.capturePreviewLayer = layer
     }
+	
+	private var isProcessingImage = false
 }
 
 extension ViewFinderViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
-    
+	func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+		guard !isProcessingImage else {
+			return
+		}
+		isProcessingImage = true
+		guard let buffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
+			isProcessingImage = false
+			return
+		}
+		let results = try! rectangleExtractor.update(buffer)
+		isProcessingImage = false
+		
+		DispatchQueue.main.async {
+			guard let (ciImage, bounds) = results.first else {
+				self.extractedRectangleImage.image = nil
+				self.shapeLayer.path = nil
+				return
+			}
+			let context = CIContext()
+			guard let image = context.createCGImage(ciImage, from: ciImage.extent) else {
+				self.extractedRectangleImage.image = nil
+				self.shapeLayer.path = nil
+				return
+			}
+			guard 1.3 ... 2.0 ~= CGFloat(image.width) / CGFloat(image.height) else {
+				return
+			}
+			self.extractedRectangleImage.image = UIImage(cgImage: image)
+			
+			let path = CGMutablePath()
+			path.addLines(between: bounds.map{CGPoint(x: $0.y * self.view.frame.width, y: $0.x * self.view.frame.height)})
+			path.closeSubpath()
+			self.shapeLayer?.path = path
+		}
+	}
 }
