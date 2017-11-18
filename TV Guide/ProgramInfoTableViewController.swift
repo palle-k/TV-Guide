@@ -3,10 +3,13 @@ import UIKit
 
 class ProgramInfoTableViewController: UITableViewController {
     
-    private let startTimeHour: Int = 1
-    private let startTimeMinute: Int = 0
-    private let endTimeHour: Int = 23
-    private let endTimeMinute: Int = 0
+    private let startTimeHour: Int = 7
+    private let startTimeMinute: Int = 50
+    private let endTimeHour: Int = 7
+    private let endTimeMinute: Int = 51
+    private var timer: Timer?
+    
+    
     
     @IBOutlet weak var timeProgressView: UIProgressView!
     @IBOutlet weak var timeLabel: UILabel!
@@ -32,11 +35,15 @@ class ProgramInfoTableViewController: UITableViewController {
         let endString = dateFormatter.string(from: end)
         
         timeLabel.text = startString + " - " + endString
-        
-        updateTimeProgressView()
+        timer  = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(self.updateTimeProgressView), userInfo: nil, repeats: true)
     }
     
-    private func updateTimeProgressView() {
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        timer?.invalidate()
+    }
+    
+    @objc private func updateTimeProgressView() {
         let now = Date()
    
         guard let startTime = createDate(hour: startTimeHour, minute: startTimeMinute),
@@ -48,9 +55,9 @@ class ProgramInfoTableViewController: UITableViewController {
             let duration = endTime.timeIntervalSince(startTime)
             let progress = now.timeIntervalSince(startTime)
             timeProgressView.setProgress((Float) (progress / duration), animated: false)
-            
+        } else {
+            timeProgressView.progress = 0
         }
-        
     }
 
     private func createDate(hour: Int, minute: Int) -> Date? {
