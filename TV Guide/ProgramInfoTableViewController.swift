@@ -14,16 +14,6 @@ class ProgramInfoTableViewController: UITableViewController {
     @IBOutlet weak var timeProgressView: UIProgressView!
     @IBOutlet weak var timeLabel: UILabel!
     
-    private func JSONResponseDataFormatter(_ data: Data) -> Data {
-        do {
-            let dataAsJSON = try JSONSerialization.jsonObject(with: data)
-            let prettyData =  try JSONSerialization.data(withJSONObject: dataAsJSON, options: .prettyPrinted)
-            return prettyData
-        } catch {
-            return data
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,10 +31,7 @@ class ProgramInfoTableViewController: UITableViewController {
         }
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
-        let startString = dateFormatter.string(from: start)
-        let endString = dateFormatter.string(from: end)
-        
-        timeLabel.text = startString + " - " + endString
+        timeLabel.text = dateFormatter.string(from: start) + " - " + dateFormatter.string(from: end)
         timer  = Timer.scheduledTimer(timeInterval: 10,
                                       target: self,
                                       selector: #selector(self.updateTimeProgressView),
@@ -52,25 +39,34 @@ class ProgramInfoTableViewController: UITableViewController {
                                       repeats: true)
         updateTimeProgressView()
         
-
-        let provider = MoyaProvider<EPGService>()
         
-        provider.request(.epg(key: "13cf7f8f841768c2666b183a5621ff01",
+        let provider = MoyaProvider<EPGService>()
+       
+        provider.request(.now(key: "13cf7f8f841768c2666b183a5621ff01",
                               selection: "{data{id,type,title,tvChannelName,startTime,endTime,genres{type,title,subType},images{url}}}",
                               limit: 10,
                               sortby: "title",
                               sortascending: false,
-                              channelid: 1,
-                              ids: "",
-                              from: "2017-11-18",
-                              to: "2017-11-18",
-                              showrunning: true
+                              channelid: 1
                         ),
                          completion: {
-                            result in
-                            print(result)
-                            
+                            switch $0 {
+                            case let .success(moyaResponse):
+                               
+                                let statusCode = moyaResponse.statusCode
+                                do {
+                                    try moyaResponse.filterSuccessfulStatusCodes()
+                                    let data = try moyaResponse.mapJSON()
+                                }
+                                catch {
+                                    
+                                }
+                            case let .failure(error):
+                                print(error)
+                            }
         })
+        
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
