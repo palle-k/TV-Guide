@@ -39,34 +39,32 @@ class ProgramInfoTableViewController: UITableViewController {
                                       repeats: true)
         updateTimeProgressView()
         
+        let provider = MoyaProvider<EPGService>(plugins: [NetworkLoggerPlugin(verbose: true, cURL: true)])
         
-        let provider = MoyaProvider<EPGService>()
-       
+        
+//        let provider = MoyaProvider<EPGService>()
         provider.request(
-			.now(
+			.epg(
 				selection: "{data{id,type,title,tvChannelName,startTime,endTime,genres{type,title,subType},images{url}}}",
 				limit: 10,
 				sortby: "title",
 				sortascending: false,
-				channelid: 1
-			)
+				channelid: 1,
+                ids: "",
+                from: "2017-11-18",
+                to: "2017-11-18",
+                showrunning: true
+            )
 		){
 			switch $0 {
 			case let .success(moyaResponse):
-				print(String(data: moyaResponse.data, encoding: .utf8) ?? "")
-//				let statusCode = moyaResponse.statusCode
-//				do {
-//					try moyaResponse.filterSuccessfulStatusCodes()
-//					let data = try moyaResponse.mapJSON()
-//				}
-//				catch {
-//
-//				}
+                break
+//                print(String(data: moyaResponse.data, encoding: .utf8) ?? "")
+        
 			case let .failure(error):
-				print(error)
+				break//print(error)
 			}
         }
-        
         
     }
     

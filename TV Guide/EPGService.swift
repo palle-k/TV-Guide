@@ -27,6 +27,10 @@ extension EPGService: TargetType {
         return URL(string: "https://hackatum.7tv.de")!
     }
     
+    var parameterEncoding: Moya.ParameterEncoding {
+        return JSONEncoding.default
+    }
+    
     var path: String {
         switch self {
         case .epg:
@@ -80,22 +84,29 @@ extension EPGService: TargetType {
     var task: Task {
 		switch self {
 		case .epg(let selection, let limit, let sortby, let sortascending, let channelid, let ids, let from, let to, let showrunning):
-			return Task.requestJSONEncodable(
-				Request(
-					selection: selection,
-					skip: 0,
-					limit: limit,
-					sortedBy: sortby,
-					sortAscending: sortascending,
-					brand: "ProSieben",
-					channelId: channelid,
-					search: "title",
-					ids: ids,
-					from: from,
-					to: to,
-					showRunning: showrunning
-				)
-			)
+//            return Task.requestJSONEncodable(
+//                Request(
+//                    selection: selection,
+//                    skip: 0,
+//                    limit: limit,
+//                    sortedBy: sortby,
+//                    sortAscending: sortascending,
+//                    brand: "ProSieben",
+//                    channelId: channelid,
+//                    search: "title",
+//                    ids: ids,
+//                    from: from,
+//                    to: to,
+//                    showRunning: showrunning
+//                )
+//            )
+            return Task.requestParameters(
+                parameters: [
+                    "selection": selection,
+                    "api_key": "13cf7f8f841768c2666b183a5621ff01"
+                ],
+                encoding: URLEncoding.queryString
+            )
 		case .now(let selection, let limit, let sortby, let sortascending, let channelid):
 			return Task.requestJSONEncodable(
 				Request(
@@ -119,8 +130,8 @@ extension EPGService: TargetType {
     var headers: [String : String]? {
         return [
 			"key" : "13cf7f8f841768c2666b183a5621ff01",
-			"signaturemethod": "SHA256",
-			"requestdate": "2015-01-01T00:00:00"
+//            "signaturemethod": "",
+//            "requestdate": ""
 		]
     }
 }
