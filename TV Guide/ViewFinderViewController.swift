@@ -13,6 +13,9 @@ class ViewFinderViewController: UIViewController {
 
     private var session: AVCaptureSession?
     private var capturePreviewLayer: AVCaptureVideoPreviewLayer?
+	private var shapeLayer: CAShapeLayer!
+	
+	private var rectangleExtractor = RectangleExtractor()
     
     @IBOutlet weak var instructionContainer: UIVisualEffectView!
     
@@ -21,6 +24,13 @@ class ViewFinderViewController: UIViewController {
         
 		instructionContainer.layer.cornerRadius = 10
         instructionContainer.clipsToBounds = true
+		
+		shapeLayer = CAShapeLayer()
+		shapeLayer.frame = view.bounds
+		shapeLayer.strokeColor = UIColor.red.cgColor
+		shapeLayer.fillColor = UIColor.clear.cgColor
+		shapeLayer.lineWidth = 3.0
+		view.layer.addSublayer(shapeLayer)
         
         do {
             try self.initSession()
@@ -44,6 +54,7 @@ class ViewFinderViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         capturePreviewLayer?.frame = self.view.bounds
+		shapeLayer?.frame = view.bounds
     }
     
     private func initSession() throws {
@@ -75,8 +86,30 @@ class ViewFinderViewController: UIViewController {
         self.session = session
         self.capturePreviewLayer = layer
     }
+	
+	private var isProcessingImage = false
 }
 
 extension ViewFinderViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
-    
+	func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+		guard !isProcessingImage else {
+			return
+		}
+		isProcessingImage = true
+		guard let buffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
+			isProcessingImage = false
+			return
+		}
+		let results = try! rectangleExtractor.update(buffer)
+		isProcessingImage = false
+		
+		DispatchQueue.main.async {
+			let path = CGMutablePath()
+			for result in results {
+				path.addLines(between: result.map{CGPoint(x: $0.y * self.view.frame.width, y: $0.x * self.view.frame.height)})
+				path.closeSubpath()
+			}
+			self.shapeLayer?.path = path
+		}
+	}
 }

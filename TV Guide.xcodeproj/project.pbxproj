@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2E597A08823819DB078FEFEE /* Pods_TV_Guide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A46FA5497CD85A3A31CB059 /* Pods_TV_Guide.framework */; };
 		E66665D21FBF8A2300342BBC /* InfoView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E66665D11FBF8A2300342BBC /* InfoView.storyboard */; };
+		E66665D41FBF9BF200342BBC /* RectangleExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66665D31FBF9BF200342BBC /* RectangleExtractor.swift */; };
 		E6B59B281FBF808E00544FFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B59B271FBF808E00544FFF /* AppDelegate.swift */; };
 		E6B59B2A1FBF808E00544FFF /* ViewFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B59B291FBF808E00544FFF /* ViewFinderViewController.swift */; };
 		E6B59B2D1FBF808E00544FFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6B59B2B1FBF808E00544FFF /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 		7A46FA5497CD85A3A31CB059 /* Pods_TV_Guide.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TV_Guide.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		959A3A4887B9555FFD9F3574 /* Pods-TV Guide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV Guide.release.xcconfig"; path = "Pods/Target Support Files/Pods-TV Guide/Pods-TV Guide.release.xcconfig"; sourceTree = "<group>"; };
 		E66665D11FBF8A2300342BBC /* InfoView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InfoView.storyboard; sourceTree = "<group>"; };
+		E66665D31FBF9BF200342BBC /* RectangleExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleExtractor.swift; sourceTree = "<group>"; };
 		E6B59B241FBF808E00544FFF /* TV Guide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TV Guide.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6B59B271FBF808E00544FFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6B59B291FBF808E00544FFF /* ViewFinderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFinderViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			children = (
 				E6B59B271FBF808E00544FFF /* AppDelegate.swift */,
 				E6B59B291FBF808E00544FFF /* ViewFinderViewController.swift */,
+				E66665D31FBF9BF200342BBC /* RectangleExtractor.swift */,
 				E6B59B2B1FBF808E00544FFF /* Main.storyboard */,
 				E66665D11FBF8A2300342BBC /* InfoView.storyboard */,
 				E6B59B2E1FBF808E00544FFF /* Assets.xcassets */,
@@ -219,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6B59B2A1FBF808E00544FFF /* ViewFinderViewController.swift in Sources */,
+				E66665D41FBF9BF200342BBC /* RectangleExtractor.swift in Sources */,
 				E6B59B281FBF808E00544FFF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
