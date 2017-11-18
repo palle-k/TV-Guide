@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="So5-D3-XyB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TCp-qF-pnF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Title-->
+        <!--Rick and Morty [Adult Swim]-->
         <scene sceneID="Dry-9M-J3E">
             <objects>
                 <tableViewController id="So5-D3-XyB" customClass="ProgramInfoTableViewController" customModule="TV_Guide" customModuleProvider="target" sceneMemberID="viewController">
@@ -112,7 +112,7 @@ And yes, by the way, i DO have a Rick &amp; Morty tattoo. And no, you cannot see
                             <outlet property="delegate" destination="So5-D3-XyB" id="0gW-cs-bHu"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="GhP-yy-Vjy"/>
+                    <navigationItem key="navigationItem" title="Rick and Morty [Adult Swim]" id="GhP-yy-Vjy"/>
                     <connections>
                         <outlet property="timeLabel" destination="Sqb-1Z-4IW" id="PaB-YH-uem"/>
                         <outlet property="timeProgressView" destination="axJ-xl-TKA" id="weT-Y2-rcc"/>

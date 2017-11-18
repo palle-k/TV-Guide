@@ -3,13 +3,11 @@ import UIKit
 
 class ProgramInfoTableViewController: UITableViewController {
     
-    private let startTimeHour: Int = 7
-    private let startTimeMinute: Int = 50
-    private let endTimeHour: Int = 7
-    private let endTimeMinute: Int = 51
+    private let startTimeHour: Int = 9
+    private let startTimeMinute: Int = 36
+    private let endTimeHour: Int = 9
+    private let endTimeMinute: Int = 37
     private var timer: Timer?
-    
-    
     
     @IBOutlet weak var timeProgressView: UIProgressView!
     @IBOutlet weak var timeLabel: UILabel!
@@ -35,7 +33,12 @@ class ProgramInfoTableViewController: UITableViewController {
         let endString = dateFormatter.string(from: end)
         
         timeLabel.text = startString + " - " + endString
-        timer  = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(self.updateTimeProgressView), userInfo: nil, repeats: true)
+        timer  = Timer.scheduledTimer(timeInterval: 10,
+                                      target: self,
+                                      selector: #selector(self.updateTimeProgressView),
+                                      userInfo: nil,
+                                      repeats: true)
+        updateTimeProgressView()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -51,12 +54,14 @@ class ProgramInfoTableViewController: UITableViewController {
                 return
         }
         
-        if  now < endTime && now > startTime {
+        if  now <= endTime && now >= startTime {
             let duration = endTime.timeIntervalSince(startTime)
             let progress = now.timeIntervalSince(startTime)
-            timeProgressView.setProgress((Float) (progress / duration), animated: false)
-        } else {
-            timeProgressView.progress = 0
+            timeProgressView.setProgress((Float) (progress / duration), animated: true)
+        } else if now > endTime {
+            timeProgressView.setProgress(1, animated: true)
+        } else if now < startTime {
+            timeProgressView.setProgress(0, animated: true)
         }
     }
 
@@ -71,7 +76,6 @@ class ProgramInfoTableViewController: UITableViewController {
         dateComponents.minute = minute
         return Calendar.current.date(from: dateComponents)
     }
-    
 }
 
 
