@@ -77,14 +77,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="396.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fic-ly-t8Y">
-                                                    <rect key="frame" x="16" y="24" width="343" height="24"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5m-Q3-Y3z">
-                                                    <rect key="frame" x="16" y="56" width="343" height="333"/>
+                                                    <rect key="frame" x="16" y="56" width="343" height="324.5"/>
                                                     <string key="text">To be fair, you have to have a very high IQ to understand Rick and Morty. The humour is extremely subtle, and without a solid grasp of theoretical physics most of the jokes will go over a typical viewer’s head. There’s also Rick’s nihilistic outlook, which is deftly woven into his characterisation- his personal philosophy draws heavily from Narodnaya Volya literature, for instance. The fans understand this stuff; they have the intellectual capacity to truly appreciate the depths of these jokes, to realise that they’re not just funny- they say something deep about LIFE. As a consequence people who dislike Rick &amp; Morty truly ARE idiots- of course they wouldn’t appreciate, for instance, the humour in Rick’s existential catchphrase “Wubba Lubba Dub Dub,” which itself is a cryptic reference to Turgenev’s Russian epic Fathers and Sons. I’m smirking right now just imagining one of those addlepated simpletons scratching their heads in confusion as Dan Harmon’s genius wit unfolds itself on their television screens. What fools.. how I pity them. 😂
 
 And yes, by the way, i DO have a Rick &amp; Morty tattoo. And no, you cannot see it. It’s for the ladies’ eyes only- and even then they have to demonstrate that they’re within 5 IQ points of my own (preferably lower) beforehand. Nothin personnel kid 😎</string>
@@ -92,15 +86,21 @@ And yes, by the way, i DO have a Rick &amp; Morty tattoo. And no, you cannot see
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fic-ly-t8Y">
+                                                    <rect key="frame" x="16" y="24" width="343" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="Fic-ly-t8Y" firstAttribute="leading" secondItem="2H4-A1-w0R" secondAttribute="leading" constant="16" id="0gc-ZS-b8D"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="g5m-Q3-Y3z" secondAttribute="bottom" constant="8" id="3Cn-pB-I2v"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Fic-ly-t8Y" secondAttribute="trailing" constant="8" id="3VN-sC-3xb"/>
-                                                <constraint firstAttribute="bottom" secondItem="g5m-Q3-Y3z" secondAttribute="bottom" constant="8" id="MnZ-KQ-4PM"/>
                                                 <constraint firstItem="Fic-ly-t8Y" firstAttribute="top" secondItem="2H4-A1-w0R" secondAttribute="topMargin" constant="16" id="OV6-U2-BDJ"/>
-                                                <constraint firstItem="g5m-Q3-Y3z" firstAttribute="top" secondItem="Fic-ly-t8Y" secondAttribute="bottom" constant="8" id="bqu-zy-oe2"/>
+                                                <constraint firstItem="g5m-Q3-Y3z" firstAttribute="top" secondItem="Fic-ly-t8Y" secondAttribute="bottom" constant="8" id="Znk-SW-s9e"/>
                                                 <constraint firstItem="g5m-Q3-Y3z" firstAttribute="leading" secondItem="2H4-A1-w0R" secondAttribute="leading" constant="16" id="hNd-CZ-oQu"/>
                                                 <constraint firstAttribute="trailing" secondItem="g5m-Q3-Y3z" secondAttribute="trailing" constant="16" id="jdQ-vE-FxQ"/>
-                                                <constraint firstItem="Fic-ly-t8Y" firstAttribute="leading" secondItem="2H4-A1-w0R" secondAttribute="leadingMargin" constant="8" id="k7O-i9-Kd7"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
