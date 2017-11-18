@@ -45,7 +45,7 @@ extension CGImagePropertyOrientation {
 }
 
 class RectangleExtractor {
-    func update(_ pixelBuffer: CVPixelBuffer) throws -> [[CGPoint]] {
+    func update(_ pixelBuffer: CVPixelBuffer) throws -> [(CIImage, [CGPoint])] {
 		var rectangles: [VNRectangleObservation] = []
 		
         let semaphore = DispatchSemaphore(value: 0)
@@ -67,7 +67,7 @@ class RectangleExtractor {
 		let image = CIImage(cvImageBuffer: pixelBuffer)
 		let imageSize = image.extent.size
 		
-		let images = rectangles.flatMap { observation -> CIImage? in
+		return rectangles.flatMap { observation -> (CIImage, [CGPoint])? in
 			// Verify detected rectangle is valid.
 			let boundingBox = observation.boundingBox.scaled(to: imageSize)
 			guard image.extent.contains(boundingBox) else {
@@ -82,7 +82,8 @@ class RectangleExtractor {
 			let correctedImage = image
 				.cropped(to: boundingBox)
 				.applyingFilter(
-					"CIPerspectiveCorrection", parameters: [
+					"CIPerspectiveCorrection",
+					parameters: [
 						"inputTopLeft": CIVector(cgPoint: topLeft),
 						"inputTopRight": CIVector(cgPoint: topRight),
 						"inputBottomLeft": CIVector(cgPoint: bottomLeft),
@@ -90,11 +91,15 @@ class RectangleExtractor {
 					]
 				)
 				.transformed(by: CGAffineTransform(rotationAngle: 3 * .pi / 2))
-			return correctedImage
-		}
-		
-		return rectangles.map { observation in
-			return [observation.topLeft, observation.topRight, observation.bottomRight, observation.bottomLeft]
+			
+			let bounds = [
+				observation.topLeft,
+				observation.topRight,
+				observation.bottomRight,
+				observation.bottomLeft
+			]
+			
+			return (correctedImage, bounds)
 		}
     }
 }
