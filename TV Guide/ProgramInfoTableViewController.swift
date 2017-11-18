@@ -64,7 +64,6 @@ class ProgramInfoTableViewController: UITableViewController {
 				print(error)
 			}
         }
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

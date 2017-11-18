@@ -10,6 +10,7 @@
 		2E597A08823819DB078FEFEE /* Pods_TV_Guide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A46FA5497CD85A3A31CB059 /* Pods_TV_Guide.framework */; };
 		810B79011FC0375D003EB279 /* EPGService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810B79001FC0375D003EB279 /* EPGService.swift */; };
 		81B9F9F31FBFC9E5008C19DC /* ProgramInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B9F9F21FBFC9E5008C19DC /* ProgramInfoTableViewController.swift */; };
+		81EEB9BA1FC0CAB700F6B090 /* ProgramOverviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EEB9B91FC0CAB700F6B090 /* ProgramOverviewTableViewController.swift */; };
 		E66665D21FBF8A2300342BBC /* InfoView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E66665D11FBF8A2300342BBC /* InfoView.storyboard */; };
 		E66665D41FBF9BF200342BBC /* RectangleExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66665D31FBF9BF200342BBC /* RectangleExtractor.swift */; };
 		E6B59B281FBF808E00544FFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B59B271FBF808E00544FFF /* AppDelegate.swift */; };
@@ -24,6 +25,7 @@
 		7A46FA5497CD85A3A31CB059 /* Pods_TV_Guide.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TV_Guide.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		810B79001FC0375D003EB279 /* EPGService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPGService.swift; sourceTree = "<group>"; };
 		81B9F9F21FBFC9E5008C19DC /* ProgramInfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramInfoTableViewController.swift; sourceTree = "<group>"; };
+		81EEB9B91FC0CAB700F6B090 /* ProgramOverviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramOverviewTableViewController.swift; sourceTree = "<group>"; };
 		959A3A4887B9555FFD9F3574 /* Pods-TV Guide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV Guide.release.xcconfig"; path = "Pods/Target Support Files/Pods-TV Guide/Pods-TV Guide.release.xcconfig"; sourceTree = "<group>"; };
 		E66665D11FBF8A2300342BBC /* InfoView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InfoView.storyboard; sourceTree = "<group>"; };
 		E66665D31FBF9BF200342BBC /* RectangleExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleExtractor.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				E6B59B291FBF808E00544FFF /* ViewFinderViewController.swift */,
 				E66665D31FBF9BF200342BBC /* RectangleExtractor.swift */,
 				E6B59B2B1FBF808E00544FFF /* Main.storyboard */,
+				81EEB9B91FC0CAB700F6B090 /* ProgramOverviewTableViewController.swift */,
 				81B9F9F21FBFC9E5008C19DC /* ProgramInfoTableViewController.swift */,
 				E66665D11FBF8A2300342BBC /* InfoView.storyboard */,
 				E6B59B2E1FBF808E00544FFF /* Assets.xcassets */,
@@ -239,6 +242,7 @@
 				E6B59B2A1FBF808E00544FFF /* ViewFinderViewController.swift in Sources */,
 				E66665D41FBF9BF200342BBC /* RectangleExtractor.swift in Sources */,
 				81B9F9F31FBFC9E5008C19DC /* ProgramInfoTableViewController.swift in Sources */,
+				81EEB9BA1FC0CAB700F6B090 /* ProgramOverviewTableViewController.swift in Sources */,
 				810B79011FC0375D003EB279 /* EPGService.swift in Sources */,
 				E6B59B281FBF808E00544FFF /* AppDelegate.swift in Sources */,
 			);
