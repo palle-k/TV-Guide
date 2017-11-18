@@ -107,7 +107,8 @@ extension ViewFinderViewController: AVCaptureVideoDataOutputSampleBufferDelegate
 		isProcessingImage = false
 		
 		for (image, _) in results {
-			_ = logoClassifier.predictTVChannelName(in: image)
+			let prediction = logoClassifier.predictTVChannelName(in: image)
+			print(prediction.sorted(by: {$0.value < $1.value}).reversed().map{"\($0.key): \($0.value)"}.joined(separator: "\n") + "\n")
 		}
 		
 		DispatchQueue.main.async {

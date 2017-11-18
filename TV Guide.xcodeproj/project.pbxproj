@@ -16,6 +16,8 @@
 		E6B59B2D1FBF808E00544FFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6B59B2B1FBF808E00544FFF /* Main.storyboard */; };
 		E6B59B2F1FBF808E00544FFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6B59B2E1FBF808E00544FFF /* Assets.xcassets */; };
 		E6B59B321FBF808E00544FFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6B59B301FBF808E00544FFF /* LaunchScreen.storyboard */; };
+		E6FCCE611FC0C757003F30A2 /* LogoClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E6FCCE601FC0C757003F30A2 /* LogoClassifier.mlmodel */; };
+		E6FCCE631FC0CA38003F30A2 /* CoreMLHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FCCE621FC0CA38003F30A2 /* CoreMLHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		E6B59B2E1FBF808E00544FFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E6B59B311FBF808E00544FFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E6B59B331FBF808E00544FFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E6FCCE601FC0C757003F30A2 /* LogoClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = LogoClassifier.mlmodel; sourceTree = "<group>"; };
+		E6FCCE621FC0CA38003F30A2 /* CoreMLHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +92,8 @@
 				E6B59B291FBF808E00544FFF /* ViewFinderViewController.swift */,
 				E66665D31FBF9BF200342BBC /* RectangleExtractor.swift */,
 				E62F37E01FBFC1E900C25A25 /* TVChannelLogoClassifier.swift */,
+				E6FCCE621FC0CA38003F30A2 /* CoreMLHelpers.swift */,
+				E6FCCE601FC0C757003F30A2 /* LogoClassifier.mlmodel */,
 				E6B59B2B1FBF808E00544FFF /* Main.storyboard */,
 				E66665D11FBF8A2300342BBC /* InfoView.storyboard */,
 				E6B59B2E1FBF808E00544FFF /* Assets.xcassets */,
@@ -225,9 +231,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6B59B2A1FBF808E00544FFF /* ViewFinderViewController.swift in Sources */,
+				E6FCCE611FC0C757003F30A2 /* LogoClassifier.mlmodel in Sources */,
 				E62F37E11FBFC1E900C25A25 /* TVChannelLogoClassifier.swift in Sources */,
 				E66665D41FBF9BF200342BBC /* RectangleExtractor.swift in Sources */,
 				E6B59B281FBF808E00544FFF /* AppDelegate.swift in Sources */,
+				E6FCCE631FC0CA38003F30A2 /* CoreMLHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
