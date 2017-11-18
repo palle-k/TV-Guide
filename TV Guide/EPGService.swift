@@ -1,5 +1,4 @@
 
-import Foundation
 import Moya
 
 enum EPGService {
@@ -33,9 +32,9 @@ extension EPGService: TargetType {
     var path: String {
         switch self {
         case .epg(key: _, selection: _, limit: _, sortby: _, sortascending: _, channelid: _, ids: _, from: _, to: _, showrunning: _):
-            return "/epg"
+            return "/api/v1/epg"
         case .now(key: _, selection: _, limit: _, sortby: _, sortascending: _, channelid: _):
-            return "/now"
+            return "/api/epg/now"
         }
     }
     
@@ -84,7 +83,7 @@ extension EPGService: TargetType {
     }
     
     var headers: [String : String]? {
-        return ["Content-type": "application/json"]
+        return ["key" : "13cf7f8f841768c2666b183a5621ff01", "signaturemethod":"","requestdate":""]
     }
 }
 

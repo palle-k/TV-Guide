@@ -1,5 +1,7 @@
 
 import UIKit
+import Moya
+import Foundation
 
 class ProgramInfoTableViewController: UITableViewController {
     
@@ -11,6 +13,16 @@ class ProgramInfoTableViewController: UITableViewController {
     
     @IBOutlet weak var timeProgressView: UIProgressView!
     @IBOutlet weak var timeLabel: UILabel!
+    
+    private func JSONResponseDataFormatter(_ data: Data) -> Data {
+        do {
+            let dataAsJSON = try JSONSerialization.jsonObject(with: data)
+            let prettyData =  try JSONSerialization.data(withJSONObject: dataAsJSON, options: .prettyPrinted)
+            return prettyData
+        } catch {
+            return data
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +51,26 @@ class ProgramInfoTableViewController: UITableViewController {
                                       userInfo: nil,
                                       repeats: true)
         updateTimeProgressView()
+        
+
+        let provider = MoyaProvider<EPGService>()
+        
+        provider.request(.epg(key: "13cf7f8f841768c2666b183a5621ff01",
+                              selection: "{data{id,type,title,tvChannelName,startTime,endTime,genres{type,title,subType},images{url}}}",
+                              limit: 10,
+                              sortby: "title",
+                              sortascending: false,
+                              channelid: 1,
+                              ids: "",
+                              from: "2017-11-18",
+                              to: "2017-11-18",
+                              showrunning: true
+                        ),
+                         completion: {
+                            result in
+                            print(result)
+                            
+        })
     }
     
     override func viewWillDisappear(_ animated: Bool) {
