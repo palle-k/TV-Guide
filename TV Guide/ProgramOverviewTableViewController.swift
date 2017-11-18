@@ -21,32 +21,47 @@ class ProgramOverviewTableViewController: UITableViewController {
         channel = "SAT.1"
         
         self.title = channel
-        
-        loadCurrentProgram()
     }
     
-    private func loadCurrentProgram() {
-        guard let channel = channel,
-            let chId = programs[channel] else {
-            return
-        }
-        
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 42
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "", for: indexPath) as! CurrentTableViewCell
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        //need: image, title, time
+        var data: Data?
         let provider = MoyaProvider<EPGService>(plugins: [NetworkLoggerPlugin(verbose: true)])
         provider.request(
             .now(
                 selection: "{data{id,type,title,tvChannelName,startTime,endTime,genres{type,title,subType},images{url}}}",
                 limit: 1.0,
-                sortby: "startTime",
-                sortascending: true,
-                channelid: chId
+                sortby: "",
+                sortascending: false,
+                channelid: 1
             )
         ){
             switch $0 {
             case let .success(moyaResponse):
                 print(String(data: moyaResponse.data, encoding: .utf8) ?? "")
+                data = moyaResponse.data
+                
             case let .failure(error):
                 print(error)
             }
         }
+        guard let json = try? JSONSerialization.jsonObject(with: data!, options: []) as? [String : Any],
+                let title = json?["title"] as? String else {
+            return cell
+        }
+        
+        return cell
     }
 }

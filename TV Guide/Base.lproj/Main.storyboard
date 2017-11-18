@@ -91,7 +91,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CurrentProgramCell" rowHeight="220" id="0Yb-wa-Iah">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CurrentProgramCell" rowHeight="220" id="0Yb-wa-Iah" customClass="CurrentTableViewCell" customModule="TV_Guide" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="220"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0Yb-wa-Iah" id="t7h-5q-14O">
@@ -128,10 +128,13 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="tvShowImageView" destination="rrN-iv-eQR" id="FqU-Hd-ez1"/>
+                                    <outlet property="tvShowTimeLabel" destination="k9n-nk-AK9" id="IBs-yt-p1u"/>
+                                    <outlet property="tvShowTitleLabel" destination="Cyo-yb-gxI" id="DBh-lf-Xi1"/>
                                     <segue destination="5jG-4s-dQK" kind="show" id="ied-Wd-9S0"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UpcomingProgramCell" rowHeight="102" id="bMS-lh-PQd">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UpcomingProgramCell" rowHeight="102" id="bMS-lh-PQd" customClass="UpcomingTableViewCell" customModule="TV_Guide" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="248" width="375" height="102"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bMS-lh-PQd" id="7EH-Q6-qT0">
@@ -172,6 +175,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="tvShowImageView" destination="4bW-Lt-sV3" id="err-gT-NlX"/>
+                                    <outlet property="tvShowTimeLabel" destination="P8z-bI-dyR" id="dba-qC-6j8"/>
+                                    <outlet property="tvShowTitleLabel" destination="tIZ-MR-jvu" id="H3Y-Ln-shs"/>
                                     <segue destination="5jG-4s-dQK" kind="show" id="4N9-GP-0Yh"/>
                                 </connections>
                             </tableViewCell>
