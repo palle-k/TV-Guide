@@ -29,30 +29,42 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image-1" translatesAutoresizingMaskIntoConstraints="NO" id="02J-7n-puM">
-                                                    <rect key="frame" x="24" y="24" width="116.5" height="116.5"/>
+                                                    <rect key="frame" x="24" y="24" width="117" height="117"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="02J-7n-puM" secondAttribute="height" multiplier="1:1" id="Ce0-gj-406"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comedy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VfW-aF-y1k">
-                                                    <rect key="frame" x="156.5" y="77" width="67" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20:15 - 21:45" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sqb-1Z-4IW">
-                                                    <rect key="frame" x="156.5" y="24" width="106.5" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="je4-Nf-fbE">
+                                                    <rect key="frame" x="157" y="24" width="198" height="84"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="752" text="20:15 - 21:45" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sqb-1Z-4IW">
+                                                            <rect key="frame" x="0.0" y="0.0" width="106.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="axJ-xl-TKA">
+                                                            <rect key="frame" x="0.0" y="40.5" width="198" height="2"/>
+                                                        </progressView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comedy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VfW-aF-y1k">
+                                                            <rect key="frame" x="0.0" y="62.5" width="67" height="21.5"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="axJ-xl-TKA" firstAttribute="centerY" secondItem="je4-Nf-fbE" secondAttribute="centerY" id="2eO-HP-R4D"/>
+                                                        <constraint firstAttribute="trailing" secondItem="axJ-xl-TKA" secondAttribute="trailing" id="SHv-Pv-h3t"/>
+                                                    </constraints>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="je4-Nf-fbE" firstAttribute="top" secondItem="FHC-qw-fQh" secondAttribute="topMargin" constant="16" id="02y-gr-EUm"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="02J-7n-puM" secondAttribute="bottom" constant="16" id="P7i-CF-20J"/>
-                                                <constraint firstItem="VfW-aF-y1k" firstAttribute="leading" secondItem="02J-7n-puM" secondAttribute="trailing" constant="16" id="cpN-vT-Xgd"/>
-                                                <constraint firstItem="Sqb-1Z-4IW" firstAttribute="top" secondItem="FHC-qw-fQh" secondAttribute="topMargin" constant="16" id="eQb-85-qBE"/>
-                                                <constraint firstItem="VfW-aF-y1k" firstAttribute="top" secondItem="Sqb-1Z-4IW" secondAttribute="bottom" constant="32" id="i4F-Sg-dse"/>
-                                                <constraint firstItem="Sqb-1Z-4IW" firstAttribute="leading" secondItem="02J-7n-puM" secondAttribute="trailing" constant="16" id="neE-Re-PzA"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="je4-Nf-fbE" secondAttribute="bottom" constant="48.5" id="QfQ-NA-ynq"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="je4-Nf-fbE" secondAttribute="trailing" constant="12" id="txH-TM-Tw6"/>
+                                                <constraint firstItem="je4-Nf-fbE" firstAttribute="leading" secondItem="02J-7n-puM" secondAttribute="trailing" constant="16" id="vw8-U4-Mh6"/>
                                                 <constraint firstItem="02J-7n-puM" firstAttribute="top" secondItem="FHC-qw-fQh" secondAttribute="topMargin" constant="16" id="y6e-ra-fSN"/>
                                                 <constraint firstItem="02J-7n-puM" firstAttribute="leading" secondItem="FHC-qw-fQh" secondAttribute="leadingMargin" constant="16" id="ysz-vv-fhF"/>
                                             </constraints>
@@ -66,29 +78,29 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fic-ly-t8Y">
-                                                    <rect key="frame" x="24" y="24" width="327" height="0.0"/>
+                                                    <rect key="frame" x="16" y="24" width="343" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5m-Q3-Y3z">
-                                                    <rect key="frame" x="16" y="32" width="343" height="356.5"/>
-                                                    <mutableString key="text">To be fair, you have to have a very high IQ to understand Rick and Morty. The humour is extremely subtle, and without a solid grasp of theoretical physics most of the jokes will go over a typical viewer’s head. There’s also Rick’s nihilistic outlook, which is deftly woven into his characterisation- his personal philosophy draws heavily from Narodnaya Volya literature, for instance. The fans understand this stuff; they have the intellectual capacity to truly appreciate the depths of these jokes, to realise that they’re not just funny- they say something deep about LIFE. As a consequence people who dislike Rick &amp; Morty truly ARE idiots- of course they wouldn’t appreciate, for instance, the humour in Rick’s existential catchphrase “Wubba Lubba Dub Dub,” which itself is a cryptic reference to Turgenev’s Russian epic Fathers and Sons. I’m smirking right now just imagining one of those addlepated simpletons scratching their heads in confusion as Dan Harmon’s genius wit unfolds itself on their television screens. What fools.. how I pity them. 😂
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5m-Q3-Y3z">
+                                                    <rect key="frame" x="16" y="56" width="343" height="333"/>
+                                                    <string key="text">To be fair, you have to have a very high IQ to understand Rick and Morty. The humour is extremely subtle, and without a solid grasp of theoretical physics most of the jokes will go over a typical viewer’s head. There’s also Rick’s nihilistic outlook, which is deftly woven into his characterisation- his personal philosophy draws heavily from Narodnaya Volya literature, for instance. The fans understand this stuff; they have the intellectual capacity to truly appreciate the depths of these jokes, to realise that they’re not just funny- they say something deep about LIFE. As a consequence people who dislike Rick &amp; Morty truly ARE idiots- of course they wouldn’t appreciate, for instance, the humour in Rick’s existential catchphrase “Wubba Lubba Dub Dub,” which itself is a cryptic reference to Turgenev’s Russian epic Fathers and Sons. I’m smirking right now just imagining one of those addlepated simpletons scratching their heads in confusion as Dan Harmon’s genius wit unfolds itself on their television screens. What fools.. how I pity them. 😂
 
-And yes, by the way, i DO have a Rick &amp; Morty tattoo. And no, you cannot see it. It’s for the ladies’ eyes only- and even then they have to demonstrate that they’re within 5 IQ points of my own (preferably lower) beforehand. Nothin personnel kid 😎</mutableString>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+And yes, by the way, i DO have a Rick &amp; Morty tattoo. And no, you cannot see it. It’s for the ladies’ eyes only- and even then they have to demonstrate that they’re within 5 IQ points of my own (preferably lower) beforehand. Nothin personnel kid 😎</string>
+                                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Fic-ly-t8Y" secondAttribute="trailing" constant="16" id="3VN-sC-3xb"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="g5m-Q3-Y3z" secondAttribute="bottom" constant="8" id="MnZ-KQ-4PM"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Fic-ly-t8Y" secondAttribute="trailing" constant="8" id="3VN-sC-3xb"/>
+                                                <constraint firstAttribute="bottom" secondItem="g5m-Q3-Y3z" secondAttribute="bottom" constant="8" id="MnZ-KQ-4PM"/>
                                                 <constraint firstItem="Fic-ly-t8Y" firstAttribute="top" secondItem="2H4-A1-w0R" secondAttribute="topMargin" constant="16" id="OV6-U2-BDJ"/>
                                                 <constraint firstItem="g5m-Q3-Y3z" firstAttribute="top" secondItem="Fic-ly-t8Y" secondAttribute="bottom" constant="8" id="bqu-zy-oe2"/>
                                                 <constraint firstItem="g5m-Q3-Y3z" firstAttribute="leading" secondItem="2H4-A1-w0R" secondAttribute="leading" constant="16" id="hNd-CZ-oQu"/>
                                                 <constraint firstAttribute="trailing" secondItem="g5m-Q3-Y3z" secondAttribute="trailing" constant="16" id="jdQ-vE-FxQ"/>
-                                                <constraint firstItem="Fic-ly-t8Y" firstAttribute="leading" secondItem="2H4-A1-w0R" secondAttribute="leadingMargin" constant="16" id="k7O-i9-Kd7"/>
+                                                <constraint firstItem="Fic-ly-t8Y" firstAttribute="leading" secondItem="2H4-A1-w0R" secondAttribute="leadingMargin" constant="8" id="k7O-i9-Kd7"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -101,6 +113,10 @@ And yes, by the way, i DO have a Rick &amp; Morty tattoo. And no, you cannot see
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Title" id="GhP-yy-Vjy"/>
+                    <connections>
+                        <outlet property="timeLabel" destination="Sqb-1Z-4IW" id="PaB-YH-uem"/>
+                        <outlet property="timeProgressView" destination="axJ-xl-TKA" id="weT-Y2-rcc"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Trx-Lu-W9A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
