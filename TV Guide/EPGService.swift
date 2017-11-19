@@ -66,7 +66,7 @@ extension EPGService: TargetType {
                     ],
                     encoding: URLEncoding.queryString
                 )
-            case let .now(selection, limit, sortBy, sortAscending, channelId):
+        case let .now(selection, limit, sortBy, sortAscending, channelId):
                 return Task.requestParameters(
                     parameters: [
                         "selection": selection,

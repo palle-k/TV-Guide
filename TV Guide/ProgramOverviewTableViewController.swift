@@ -16,7 +16,6 @@ struct Show: Codable {
     var startTime: Double
     var endTime: Double
     var tvChannelName: String
-    var pictureURL: String
 }
 
 let formatter: DateFormatter = {
@@ -107,7 +106,7 @@ class ProgramOverviewTableViewController: UITableViewController {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "UpcomingProgramCell", for: indexPath) as! UpcomingTableViewCell
             
-            cell.tvShowTitleLabel?.text = cellData[indexPath.row].title + cellData[indexPath.row].tvChannelName
+            cell.tvShowTitleLabel?.text = cellData[indexPath.row].title
             cell.tvShowTimeLabel?.text = clockFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(startTimeSeconds))) + " - " + clockFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(endTimeSeconds)))
             
             return cell
