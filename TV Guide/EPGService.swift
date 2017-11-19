@@ -5,9 +5,9 @@ enum EPGService {
     case epg(
 		selection: String,
 		limit: Double,
-		sortby: String,
-		sortascending: Bool,
-		channelid: Double,
+		sortBy: String,
+		sortAscending: Bool,
+		channelId: Double,
 		ids: String,
 		from: String,
 		to: String,
@@ -16,9 +16,9 @@ enum EPGService {
     case now(
 		selection: String,
 		limit: Double,
-		sortby: String,
-		sortascending: Bool,
-		channelid: Double
+		sortBy: String,
+		sortAscending: Bool,
+		channelId: Double
 	)
 }
 
@@ -50,15 +50,23 @@ extension EPGService: TargetType {
     
     var task: Task {
 		switch self {
-            case .epg(let selection, _, _, _, _, _, _, _, _):
+        case let .epg(selection, limit, sortBy, sortAscending, channelId, ids, from, to, showrunning):
                 return Task.requestParameters(
                     parameters: [
                         "selection": selection,
+//                        "limit": limit,
+//                        "sortBy": sortBy,
+//                        "sortAscending": sortAscending,
+//                        "channelId": channelId,
+//                        "ids": ids,
+//                        "from": from,
+//                        "to": to,
+//                        "showrunning": showrunning,
                         "api_key": "13cf7f8f841768c2666b183a5621ff01"
                     ],
                     encoding: URLEncoding.queryString
                 )
-            case .now(let selection, _, _, _, _):
+            case let .now(selection, limit, sortBy, sortAscending, channelId):
                 return Task.requestParameters(
                     parameters: [
                         "selection": selection,
@@ -88,19 +96,19 @@ private extension String {
 
 fileprivate struct Request: Codable {
 	var selection: String
-	var skip: Double
+//    var skip: Double
 	var limit: Double
 	var sortedBy: String
 	var sortAscending: Bool
-	var brand: String
+//    var brand: String
 	var channelId: Double
-	var search: String
+//    var search: String
 	var ids: String?
 	var from: String?
 	var to: String?
-	var showRunning: Bool?
+	var showrunning: Bool?
 	
 	private enum CodingKeys: String, CodingKey {
-		case selection, skip, limit, sortedBy, sortAscending, brand, channelId, search, ids, from, to, showRunning = "showrunning"
+		case selection, /*skip,*/ limit, sortedBy, sortAscending, /*brand,*/ channelId, /*search,*/ ids, from, to, showrunning
 	}
 }

@@ -6,10 +6,10 @@ import Foundation
 class ProgramInfoTableViewController: UITableViewController {
     
     // MOCK DATA
-    private let startTimeHour: Int = 9
-    private let startTimeMinute: Int = 36
-    private let endTimeHour: Int = 9
-    private let endTimeMinute: Int = 37
+    private let startTimeHour: Int = 2
+    private let startTimeMinute: Int = 00
+    private let endTimeHour: Int = 10
+    private let endTimeMinute: Int = 00
     
     private var timer: Timer?
     
@@ -40,30 +40,6 @@ class ProgramInfoTableViewController: UITableViewController {
                                       userInfo: nil,
                                       repeats: true)
         updateTimeProgressView()
-        
-        //Query data
-        let provider = MoyaProvider<EPGService>(plugins: [NetworkLoggerPlugin(verbose: true)])
-        provider.request(
-			.epg(
-				selection: "{data{id,type,title,tvChannelName,startTime,endTime,genres{type,title,subType},images{url}}}",
-				limit: 10,
-				sortby: "title",
-                sortascending: false,
-				channelid: 1,
-                ids: "",
-                from: "2017-11-18",
-                to: "2017-11-18",
-                showrunning: true
-            )
-		){
-        switch $0 {
-			case let .success(moyaResponse):
-                break
-                print(String(data: moyaResponse.data, encoding: .utf8) ?? "")
-			case let .failure(error):
-				print(error)
-			}
-        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
