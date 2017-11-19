@@ -148,7 +148,9 @@ extension ViewFinderViewController: AVCaptureVideoDataOutputSampleBufferDelegate
             return
         }
         
-		guard numberOfPredictions < 100 else {
+        let maxPredictionCount = 20
+        
+		guard numberOfPredictions < maxPredictionCount else {
 			return
 		}
 		
@@ -166,7 +168,7 @@ extension ViewFinderViewController: AVCaptureVideoDataOutputSampleBufferDelegate
             "Sat1Gold": "SAT.1 Gold"
         ]
         
-		if numberOfPredictions == 100 {
+		if numberOfPredictions == maxPredictionCount {
             print(totalScores
                 .lazy
                 .filter{channelNameMap.keys.contains($0.key)}
