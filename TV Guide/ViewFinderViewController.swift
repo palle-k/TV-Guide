@@ -131,7 +131,7 @@ extension ViewFinderViewController: AVCaptureVideoDataOutputSampleBufferDelegate
 		numberOfPredictions += 1
 		
 		if numberOfPredictions == 20 {
-			guard let bestMatch = totalScores.max(by: {$0.value < $1.value})?.key else {
+			guard let bestMatch = totalScores.filter({$0.key != "nologo"}).max(by: {$0.value < $1.value})?.key else {
 				numberOfPredictions = 0
 				return
 			}
