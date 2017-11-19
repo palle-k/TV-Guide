@@ -118,8 +118,33 @@ extension ViewFinderViewController: AVCaptureVideoDataOutputSampleBufferDelegate
 		}
 		let results = try! rectangleExtractor.update(buffer)
 		isProcessingImage = false
+        
+        DispatchQueue.main.async {
+            guard let (ciImage, bounds) = results.first else {
+                self.extractedRectangleImage.image = nil
+                self.shapeLayer.path = nil
+                return
+            }
+            let context = CIContext()
+            guard let image = context.createCGImage(ciImage, from: ciImage.extent) else {
+                self.extractedRectangleImage.image = nil
+                self.shapeLayer.path = nil
+                return
+            }
+            guard 1.3 ... 2.0 ~= CGFloat(image.width) / CGFloat(image.height) else {
+                self.extractedRectangleImage.image = nil
+                self.shapeLayer.path = nil
+                return
+            }
+            self.extractedRectangleImage.image = UIImage(cgImage: image)
+            
+            let path = CGMutablePath()
+            path.addLines(between: bounds.map{CGPoint(x: $0.y * self.view.frame.width, y: $0.x * self.view.frame.height)})
+            path.closeSubpath()
+            self.shapeLayer?.path = path
+        }
 		
-		guard numberOfPredictions < 20 else {
+		guard numberOfPredictions < 100 else {
 			return
 		}
 		
@@ -130,18 +155,18 @@ extension ViewFinderViewController: AVCaptureVideoDataOutputSampleBufferDelegate
 		
 		numberOfPredictions += 1
 		
-		if numberOfPredictions == 20 {
-			guard let bestMatch = totalScores.filter({$0.key != "nologo"}).max(by: {$0.value < $1.value})?.key else {
+        let channelNameMap = [
+            "ProSieben": "ProSieben",
+            "Sat1": "SAT.1",
+            "Kabel1": "kabel eins",
+            "Sat1Gold": "SAT.1 Gold"
+        ]
+        
+		if numberOfPredictions == 100 {
+			guard let bestMatch = totalScores.filter({channelNameMap.keys.contains($0.key)}).max(by: {$0.value < $1.value})?.key else {
 				numberOfPredictions = 0
 				return
 			}
-
-			let channelNameMap = [
-				"ProSieben": "ProSieben",
-				"Sat1": "SAT.1",
-				"Kabel1": "kabel eins",
-				"Sat1Gold": "SAT.1 Gold"
-			]
 			
 			if !channelNameMap.keys.contains(bestMatch) {
 				self.isActive = false
@@ -149,41 +174,20 @@ extension ViewFinderViewController: AVCaptureVideoDataOutputSampleBufferDelegate
 					let alert = UIAlertController(title: "Unsupported Channel", message: "The channel \(bestMatch) is not supported.", preferredStyle: .alert)
 					alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
 						self.isActive = true
+                        self.numberOfPredictions = 0
+                        self.session?.startRunning()
 					})
 					self.present(alert, animated: true, completion: nil)
 				}
-				numberOfPredictions = 0
-				self.bestMatch = channelNameMap[bestMatch]
 				
-				DispatchQueue.main.async {
-					self.performSegue(withIdentifier: "presentStationInfo", sender: self)
-				}
+				
 			}
-		}
-		
-		DispatchQueue.main.async {
-			guard let (ciImage, bounds) = results.first else {
-				self.extractedRectangleImage.image = nil
-				self.shapeLayer.path = nil
-				return
-			}
-			let context = CIContext()
-			guard let image = context.createCGImage(ciImage, from: ciImage.extent) else {
-				self.extractedRectangleImage.image = nil
-				self.shapeLayer.path = nil
-				return
-			}
-			guard 1.3 ... 2.0 ~= CGFloat(image.width) / CGFloat(image.height) else {
-				self.extractedRectangleImage.image = nil
-				self.shapeLayer.path = nil
-				return
-			}
-			self.extractedRectangleImage.image = UIImage(cgImage: image)
-			
-			let path = CGMutablePath()
-			path.addLines(between: bounds.map{CGPoint(x: $0.y * self.view.frame.width, y: $0.x * self.view.frame.height)})
-			path.closeSubpath()
-			self.shapeLayer?.path = path
+            
+            numberOfPredictions = 0
+            self.bestMatch = channelNameMap[bestMatch]
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "presentStationInfo", sender: self)
+            }
 		}
 	}
 }
