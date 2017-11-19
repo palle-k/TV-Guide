@@ -3,7 +3,7 @@
 //  TV Guide
 //
 //  Created by Palle Klewitz on 17.11.17.
-//  Copyright © 2017 Technische Universität München. All rights reserved.
+//  Copyright © 2017 Palle Klewitz. All rights reserved.
 //
 
 import UIKit
@@ -16,6 +16,7 @@ class ViewFinderViewController: UIViewController {
 	private var shapeLayer: CAShapeLayer!
 	
 	private var rectangleExtractor = RectangleExtractor()
+	private var logoClassifier = TVChannelLogoClassifier()
     
     @IBOutlet weak var instructionContainer: UIVisualEffectView!
 	@IBOutlet weak var extractedRectangleImage: UIImageView!
@@ -105,6 +106,11 @@ extension ViewFinderViewController: AVCaptureVideoDataOutputSampleBufferDelegate
 		let results = try! rectangleExtractor.update(buffer)
 		isProcessingImage = false
 		
+		for (image, _) in results {
+			let prediction = logoClassifier.predictTVChannelName(in: image)
+			print(prediction.sorted(by: {$0.value < $1.value}).reversed().map{"\($0.key): \($0.value)"}.joined(separator: "\n") + "\n")
+		}
+		
 		DispatchQueue.main.async {
 			guard let (ciImage, bounds) = results.first else {
 				self.extractedRectangleImage.image = nil
@@ -118,6 +124,8 @@ extension ViewFinderViewController: AVCaptureVideoDataOutputSampleBufferDelegate
 				return
 			}
 			guard 1.3 ... 2.0 ~= CGFloat(image.width) / CGFloat(image.height) else {
+				self.extractedRectangleImage.image = nil
+				self.shapeLayer.path = nil
 				return
 			}
 			self.extractedRectangleImage.image = UIImage(cgImage: image)
