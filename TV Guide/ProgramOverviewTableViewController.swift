@@ -18,10 +18,12 @@ struct Show: Codable {
     var id: String
     var type: String
     var title: String?
+	var description: String?
     var startTime: Int
     var endTime: Int
     var tvChannelName: String
 	var images: [ShowImage]?
+	var genres: [[String: String]]
 }
 
 let formatter: DateFormatter = {
@@ -68,7 +70,7 @@ class ProgramOverviewTableViewController: UITableViewController {
         
         provider.request(
             .epg(
-                selection: "{data{id,type,title,tvChannelName,startTime,endTime,genres{type,title,subType},images{url}}}",
+                selection: "{data{id,type,title,description,tvChannelName,startTime,endTime,genres{title},images{url}}}",
                 limit: 10,
                 sortBy: "startTime",
                 sortAscending: true,
@@ -107,6 +109,18 @@ class ProgramOverviewTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cellData.count
     }
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		super.prepare(for: segue, sender: sender)
+		
+		if  segue.identifier == "presentInfoView",
+			let index = self.tableView.indexPathForSelectedRow?.row,
+			let destination = segue.destination as? ProgramInfoTableViewController {
+			
+			let show = cellData[index]
+			destination.show = show
+		}
+	}
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         

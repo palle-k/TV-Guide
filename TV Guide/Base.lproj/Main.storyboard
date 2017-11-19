@@ -99,7 +99,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rrN-iv-eQR">
-                                            <rect key="frame" x="16" y="11" width="343" height="143"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="154"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="160" id="cCn-pT-8XH"/>
                                             </constraints>
@@ -125,10 +125,10 @@
                                         <constraint firstItem="Cyo-yb-gxI" firstAttribute="trailing" secondItem="t7h-5q-14O" secondAttribute="trailingMargin" id="MWJ-Tp-3nJ"/>
                                         <constraint firstItem="k9n-nk-AK9" firstAttribute="top" secondItem="Cyo-yb-gxI" secondAttribute="bottom" constant="8" id="TrK-xf-U61"/>
                                         <constraint firstItem="k9n-nk-AK9" firstAttribute="trailing" secondItem="t7h-5q-14O" secondAttribute="trailingMargin" id="Ujm-bw-ch5"/>
-                                        <constraint firstItem="rrN-iv-eQR" firstAttribute="trailing" secondItem="t7h-5q-14O" secondAttribute="trailingMargin" id="Wq1-fu-F0I"/>
+                                        <constraint firstItem="rrN-iv-eQR" firstAttribute="trailing" secondItem="t7h-5q-14O" secondAttribute="trailingMargin" constant="16" id="Wq1-fu-F0I"/>
                                         <constraint firstItem="k9n-nk-AK9" firstAttribute="leading" secondItem="t7h-5q-14O" secondAttribute="leadingMargin" id="Ynw-rv-qQW"/>
-                                        <constraint firstItem="rrN-iv-eQR" firstAttribute="top" secondItem="t7h-5q-14O" secondAttribute="topMargin" id="dFZ-WW-PJc"/>
-                                        <constraint firstItem="rrN-iv-eQR" firstAttribute="leading" secondItem="t7h-5q-14O" secondAttribute="leadingMargin" id="iEo-9G-Yzu"/>
+                                        <constraint firstItem="rrN-iv-eQR" firstAttribute="top" secondItem="t7h-5q-14O" secondAttribute="topMargin" constant="-11" id="dFZ-WW-PJc"/>
+                                        <constraint firstItem="rrN-iv-eQR" firstAttribute="leading" secondItem="t7h-5q-14O" secondAttribute="leadingMargin" constant="-16" id="iEo-9G-Yzu"/>
                                         <constraint firstItem="Cyo-yb-gxI" firstAttribute="top" secondItem="rrN-iv-eQR" secondAttribute="bottom" constant="8" id="wJN-cT-H4U"/>
                                         <constraint firstItem="Cyo-yb-gxI" firstAttribute="leading" secondItem="t7h-5q-14O" secondAttribute="leadingMargin" id="wfH-P5-9MK"/>
                                     </constraints>
@@ -137,7 +137,7 @@
                                     <outlet property="tvShowImageView" destination="rrN-iv-eQR" id="FqU-Hd-ez1"/>
                                     <outlet property="tvShowTimeLabel" destination="k9n-nk-AK9" id="MFF-kw-o5B"/>
                                     <outlet property="tvShowTitleLabel" destination="Cyo-yb-gxI" id="sAS-ve-vFN"/>
-                                    <segue destination="5jG-4s-dQK" kind="show" id="ied-Wd-9S0"/>
+                                    <segue destination="5jG-4s-dQK" kind="show" identifier="presentInfoView" id="ied-Wd-9S0"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UpcomingProgramCell" rowHeight="102" id="bMS-lh-PQd" customClass="UpcomingTableViewCell" customModule="TV_Guide" customModuleProvider="target">
@@ -184,7 +184,7 @@
                                     <outlet property="tvShowImageView" destination="4bW-Lt-sV3" id="err-gT-NlX"/>
                                     <outlet property="tvShowTimeLabel" destination="P8z-bI-dyR" id="eWj-bt-Z44"/>
                                     <outlet property="tvShowTitleLabel" destination="tIZ-MR-jvu" id="FRZ-1N-5GV"/>
-                                    <segue destination="5jG-4s-dQK" kind="show" id="4N9-GP-0Yh"/>
+                                    <segue destination="5jG-4s-dQK" kind="show" identifier="presentInfoView" id="4N9-GP-0Yh"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

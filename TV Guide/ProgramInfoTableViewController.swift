@@ -2,21 +2,34 @@
 import UIKit
 import Moya
 import Foundation
+import SDWebImage
 
 class ProgramInfoTableViewController: UITableViewController {
     
     // MOCK DATA
-    private let startTimeHour: Int = 2
-    private let startTimeMinute: Int = 00
-    private let endTimeHour: Int = 10
-    private let endTimeMinute: Int = 00
+	var startTime: Date = Date() {
+		didSet {
+			updateStuff()
+		}
+	}
+	
+	var endTime: Date = Date() {
+		didSet {
+			updateStuff()
+		}
+	}
+	
+	var show: Show!
     
     private var timer: Timer?
     
-    @IBOutlet weak var timeProgressView: UIProgressView!
+	@IBOutlet weak var showPreviewImage: UIImageView!
+	@IBOutlet weak var timeProgressView: UIProgressView!
     @IBOutlet weak var timeLabel: UILabel!
-    
-    override func viewDidLoad() {
+	@IBOutlet weak var showDescription: UILabel!
+	@IBOutlet weak var showGenre: UILabel!
+	
+	override func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
@@ -26,35 +39,41 @@ class ProgramInfoTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.tableView.estimatedRowHeight = 80
         self.tableView.rowHeight = UITableViewAutomaticDimension
+		
+		navigationItem.title = show.title ?? "No Title Available"
+		showPreviewImage.sd_setImage(with: show.images?.first?.url, completed: nil)
+		
+		startTime = Date(timeIntervalSince1970: TimeInterval(show.startTime))
+		endTime = Date(timeIntervalSince1970: TimeInterval(show.endTime))
+		
+		showDescription.text = show.description ?? "No Description Available"
+		showGenre.text = show.genres.first?.first?.value ?? "No Genre Available"
         
-        guard let start = createDate(hour: startTimeHour, minute: startTimeMinute),
-            let end = createDate(hour: endTimeHour, minute: endTimeMinute) else {
-                return
-        }
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        timeLabel.text = dateFormatter.string(from: start) + " - " + dateFormatter.string(from: end)
-        timer  = Timer.scheduledTimer(timeInterval: 10,
-                                      target: self,
-                                      selector: #selector(self.updateTimeProgressView),
-                                      userInfo: nil,
-                                      repeats: true)
-        updateTimeProgressView()
+        updateStuff()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         timer?.invalidate()
     }
+	
+	private func updateStuff() {
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "HH:mm"
+		timeLabel.text = dateFormatter.string(from: startTime) + " - " + dateFormatter.string(from: endTime)
+		timer  = Timer.scheduledTimer(
+			timeInterval: 10,
+			target: self,
+			selector: #selector(self.updateTimeProgressView),
+			userInfo: nil,
+			repeats: true
+		)
+		updateTimeProgressView()
+	}
     
     @objc private func updateTimeProgressView() {
         let now = Date()
-   
-        guard let startTime = createDate(hour: startTimeHour, minute: startTimeMinute),
-            let endTime = createDate(hour: endTimeHour, minute: endTimeMinute) else {
-                return
-        }
-        
+		
         if  now <= endTime && now >= startTime {
             let duration = endTime.timeIntervalSince(startTime)
             let progress = now.timeIntervalSince(startTime)
