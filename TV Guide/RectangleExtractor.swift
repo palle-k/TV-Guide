@@ -3,7 +3,7 @@
 //  TV Guide
 //
 //  Created by Palle Klewitz on 17.11.17.
-//  Copyright © 2017 Technische Universität München. All rights reserved.
+//  Copyright © 2017 Palle Klewitz. All rights reserved.
 //
 
 import Foundation

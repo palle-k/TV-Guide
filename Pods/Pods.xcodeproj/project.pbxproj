@@ -1435,6 +1435,7 @@
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
+<<<<<<< HEAD
 		};
 		2253C5B8105A7F8D92E7981180C3B7B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1468,6 +1469,10 @@
 			name = Debug;
 		};
 		233FA1365E4F693B41B38F57E90BC448 /* Release */ = {
+=======
+		};
+		1C17B064758752C83653E07312C18A8E /* Release */ = {
+>>>>>>> develop
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8860B63635F06C3AAB917A69524E61D2 /* Pods-TV Guide.release.xcconfig */;
 			buildSettings = {
@@ -1527,10 +1532,11 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		59F0302F2371FCC6B73EF0A418D40734 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1591,6 +1597,7 @@
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
+<<<<<<< HEAD
 		};
 		5E80CB4B6602A29D89186139D3EB9560 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1625,6 +1632,10 @@
 			name = Release;
 		};
 		61D9EC32E25935DBC79E825FB8315D45 /* Debug */ = {
+=======
+		};
+		DD9C4E92458D53817B47FA1283FC7DB4 /* Debug */ = {
+>>>>>>> develop
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 32C4B9761ACEE8FEF80C982DFB708102 /* Pods-TV Guide.debug.xcconfig */;
 			buildSettings = {
@@ -1810,11 +1821,10 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1833,6 +1843,7 @@
 			buildConfigurations = (
 				59F0302F2371FCC6B73EF0A418D40734 /* Debug */,
 				12C4B864767C59600DBFA238F1E2F8BC /* Release */,
+<<<<<<< HEAD
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1860,6 +1871,8 @@
 			buildConfigurations = (
 				254B80C063E3B684E36129583ABC01C4 /* Debug */,
 				E31B5D6523620E21A8446C8A4942E4FC /* Release */,
+=======
+>>>>>>> develop
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1867,8 +1880,13 @@
 		7039931FA789D238096AFE6174DD1922 /* Build configuration list for PBXNativeTarget "Pods-TV Guide" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
+<<<<<<< HEAD
 				61D9EC32E25935DBC79E825FB8315D45 /* Debug */,
 				233FA1365E4F693B41B38F57E90BC448 /* Release */,
+=======
+				DD9C4E92458D53817B47FA1283FC7DB4 /* Debug */,
+				1C17B064758752C83653E07312C18A8E /* Release */,
+>>>>>>> develop
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
