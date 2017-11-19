@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -98,11 +98,17 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="219.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rrN-iv-eQR">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rrN-iv-eQR">
                                             <rect key="frame" x="16" y="11" width="343" height="143"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="160" id="cCn-pT-8XH"/>
+                                            </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cyo-yb-gxI">
                                             <rect key="frame" x="16" y="162" width="343" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="xeB-DD-KgZ"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -129,8 +135,8 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="tvShowImageView" destination="rrN-iv-eQR" id="FqU-Hd-ez1"/>
-                                    <outlet property="tvShowTimeLabel" destination="k9n-nk-AK9" id="IBs-yt-p1u"/>
-                                    <outlet property="tvShowTitleLabel" destination="Cyo-yb-gxI" id="DBh-lf-Xi1"/>
+                                    <outlet property="tvShowTimeLabel" destination="k9n-nk-AK9" id="MFF-kw-o5B"/>
+                                    <outlet property="tvShowTitleLabel" destination="Cyo-yb-gxI" id="sAS-ve-vFN"/>
                                     <segue destination="5jG-4s-dQK" kind="show" id="ied-Wd-9S0"/>
                                 </connections>
                             </tableViewCell>
@@ -141,7 +147,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="101.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4bW-Lt-sV3">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4bW-Lt-sV3">
                                             <rect key="frame" x="16" y="11" width="80" height="80"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="4bW-Lt-sV3" secondAttribute="height" multiplier="1:1" id="Qbo-e4-ubm"/>
@@ -176,8 +182,8 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="tvShowImageView" destination="4bW-Lt-sV3" id="err-gT-NlX"/>
-                                    <outlet property="tvShowTimeLabel" destination="P8z-bI-dyR" id="dba-qC-6j8"/>
-                                    <outlet property="tvShowTitleLabel" destination="tIZ-MR-jvu" id="H3Y-Ln-shs"/>
+                                    <outlet property="tvShowTimeLabel" destination="P8z-bI-dyR" id="eWj-bt-Z44"/>
+                                    <outlet property="tvShowTitleLabel" destination="tIZ-MR-jvu" id="FRZ-1N-5GV"/>
                                     <segue destination="5jG-4s-dQK" kind="show" id="4N9-GP-0Yh"/>
                                 </connections>
                             </tableViewCell>
