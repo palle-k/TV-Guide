@@ -8,15 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2E597A08823819DB078FEFEE /* Pods_TV_Guide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A46FA5497CD85A3A31CB059 /* Pods_TV_Guide.framework */; };
-<<<<<<< HEAD
 		810B79011FC0375D003EB279 /* EPGService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810B79001FC0375D003EB279 /* EPGService.swift */; };
 		810BA35F1FC0E72700964CCC /* UpcomingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810BA35E1FC0E72700964CCC /* UpcomingTableViewCell.swift */; };
 		810BA3611FC0E84500964CCC /* CurrentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810BA3601FC0E84500964CCC /* CurrentTableViewCell.swift */; };
 		81B9F9F31FBFC9E5008C19DC /* ProgramInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B9F9F21FBFC9E5008C19DC /* ProgramInfoTableViewController.swift */; };
 		81EEB9BA1FC0CAB700F6B090 /* ProgramOverviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EEB9B91FC0CAB700F6B090 /* ProgramOverviewTableViewController.swift */; };
-=======
 		E62F37E11FBFC1E900C25A25 /* TVChannelLogoClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62F37E01FBFC1E900C25A25 /* TVChannelLogoClassifier.swift */; };
->>>>>>> develop
 		E66665D21FBF8A2300342BBC /* InfoView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E66665D11FBF8A2300342BBC /* InfoView.storyboard */; };
 		E66665D41FBF9BF200342BBC /* RectangleExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66665D31FBF9BF200342BBC /* RectangleExtractor.swift */; };
 		E6B59B281FBF808E00544FFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B59B271FBF808E00544FFF /* AppDelegate.swift */; };
