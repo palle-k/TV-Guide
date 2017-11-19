@@ -144,6 +144,10 @@ extension ViewFinderViewController: AVCaptureVideoDataOutputSampleBufferDelegate
             self.shapeLayer?.path = path
         }
 		
+        guard !results.isEmpty else {
+            return
+        }
+        
 		guard numberOfPredictions < 100 else {
 			return
 		}
@@ -163,8 +167,16 @@ extension ViewFinderViewController: AVCaptureVideoDataOutputSampleBufferDelegate
         ]
         
 		if numberOfPredictions == 100 {
+            print(totalScores
+                .lazy
+                .filter{channelNameMap.keys.contains($0.key)}
+                .sorted(by: {$0.value > $1.value})
+                .map{"\($0.key): \($0.value)"}
+                .joined(separator: "\n") + "\n"
+            )
 			guard let bestMatch = totalScores.filter({channelNameMap.keys.contains($0.key)}).max(by: {$0.value < $1.value})?.key else {
 				numberOfPredictions = 0
+                totalScores = [:]
 				return
 			}
 			
@@ -175,6 +187,7 @@ extension ViewFinderViewController: AVCaptureVideoDataOutputSampleBufferDelegate
 					alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
 						self.isActive = true
                         self.numberOfPredictions = 0
+                        self.totalScores = [:]
                         self.session?.startRunning()
 					})
 					self.present(alert, animated: true, completion: nil)
@@ -184,6 +197,7 @@ extension ViewFinderViewController: AVCaptureVideoDataOutputSampleBufferDelegate
 			}
             
             numberOfPredictions = 0
+            totalScores = [:]
             self.bestMatch = channelNameMap[bestMatch]
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "presentStationInfo", sender: self)

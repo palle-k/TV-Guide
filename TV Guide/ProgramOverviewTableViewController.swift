@@ -60,7 +60,7 @@ class ProgramOverviewTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        channel = "ProSieben"
+//        channel = "ProSieben"
         
         self.title = channel
         
