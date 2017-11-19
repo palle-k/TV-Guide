@@ -98,14 +98,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="219.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rrN-iv-eQR">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="154"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="160" id="cCn-pT-8XH"/>
-                                            </constraints>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cyo-yb-gxI">
-                                            <rect key="frame" x="16" y="162" width="343" height="21"/>
+                                            <rect key="frame" x="16" y="168" width="343" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="xeB-DD-KgZ"/>
                                             </constraints>
@@ -114,11 +108,17 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k9n-nk-AK9">
-                                            <rect key="frame" x="16" y="191" width="343" height="18"/>
+                                            <rect key="frame" x="16" y="197" width="343" height="12"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rrN-iv-eQR">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="160" id="cCn-pT-8XH"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" secondItem="k9n-nk-AK9" secondAttribute="bottom" id="KQG-TX-DUM"/>
@@ -234,7 +234,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="A8s-Ip-CkR"/>
+        <segue reference="asg-qf-KN3"/>
         <segue reference="4N9-GP-0Yh"/>
     </inferredMetricsTieBreakers>
 </document>

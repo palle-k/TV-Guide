@@ -47,11 +47,20 @@ class ViewFinderViewController: UIViewController {
     
     @IBAction func unwindFromStationInfo(with segue: UIStoryboardSegue) {
         session?.startRunning()
+		numberOfPredictions = 0
+		totalScores = [:]
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         session?.stopRunning()
+		
+		if segue.identifier == "presentStationInfo", let station = self.bestMatch {
+			guard let destination = (segue.destination as? UINavigationController)?.topViewController as? ProgramOverviewTableViewController else {
+				return
+			}
+			destination.channel = station
+		}
     }
     
     override func viewDidLayoutSubviews() {
@@ -91,11 +100,15 @@ class ViewFinderViewController: UIViewController {
     }
 	
 	private var isProcessingImage = false
+	var numberOfPredictions: Int = 0
+	var totalScores: [String: Double] = [:]
+	var bestMatch: String? = nil
+	var isActive: Bool = true
 }
 
 extension ViewFinderViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
 	func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-		guard !isProcessingImage else {
+		guard !isProcessingImage && isActive else {
 			return
 		}
 		isProcessingImage = true
@@ -106,9 +119,46 @@ extension ViewFinderViewController: AVCaptureVideoDataOutputSampleBufferDelegate
 		let results = try! rectangleExtractor.update(buffer)
 		isProcessingImage = false
 		
+		guard numberOfPredictions < 20 else {
+			return
+		}
+		
 		for (image, _) in results {
 			let prediction = logoClassifier.predictTVChannelName(in: image)
-			print(prediction.sorted(by: {$0.value < $1.value}).reversed().map{"\($0.key): \($0.value)"}.joined(separator: "\n") + "\n")
+			totalScores.merge(prediction, uniquingKeysWith: +)
+		}
+		
+		numberOfPredictions += 1
+		
+		if numberOfPredictions == 20 {
+			guard let bestMatch = totalScores.max(by: {$0.value < $1.value})?.key else {
+				numberOfPredictions = 0
+				return
+			}
+
+			let channelNameMap = [
+				"ProSieben": "ProSieben",
+				"Sat1": "SAT.1",
+				"Kabel1": "kabel eins",
+				"Sat1Gold": "SAT.1 Gold"
+			]
+			
+			if !channelNameMap.keys.contains(bestMatch) {
+				self.isActive = false
+				DispatchQueue.main.async {
+					let alert = UIAlertController(title: "Unsupported Channel", message: "The channel \(bestMatch) is not supported.", preferredStyle: .alert)
+					alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+						self.isActive = true
+					})
+					self.present(alert, animated: true, completion: nil)
+				}
+				numberOfPredictions = 0
+				self.bestMatch = channelNameMap[bestMatch]
+				
+				DispatchQueue.main.async {
+					self.performSegue(withIdentifier: "presentStationInfo", sender: self)
+				}
+			}
 		}
 		
 		DispatchQueue.main.async {
