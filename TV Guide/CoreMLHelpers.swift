@@ -5,6 +5,7 @@ extension UIImage {
 		let attrs = [kCVPixelBufferCGImageCompatibilityKey: kCFBooleanTrue, kCVPixelBufferCGBitmapContextCompatibilityKey: kCFBooleanTrue] as CFDictionary
 		var pixelBuffer : CVPixelBuffer?
 		let status = CVPixelBufferCreate(kCFAllocatorDefault, Int(self.size.width), Int(self.size.height), kCVPixelFormatType_32ARGB, attrs, &pixelBuffer)
+		
 		guard status == kCVReturnSuccess else {
 			return nil
 		}

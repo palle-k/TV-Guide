@@ -16,7 +16,7 @@
 		E6B59B2D1FBF808E00544FFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6B59B2B1FBF808E00544FFF /* Main.storyboard */; };
 		E6B59B2F1FBF808E00544FFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6B59B2E1FBF808E00544FFF /* Assets.xcassets */; };
 		E6B59B321FBF808E00544FFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6B59B301FBF808E00544FFF /* LaunchScreen.storyboard */; };
-		E6FCCE611FC0C757003F30A2 /* LogoClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E6FCCE601FC0C757003F30A2 /* LogoClassifier.mlmodel */; };
+		E6D0C6F91FC1550C00F30661 /* LogoClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E6D0C6F81FC1550B00F30661 /* LogoClassifier.mlmodel */; };
 		E6FCCE631FC0CA38003F30A2 /* CoreMLHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FCCE621FC0CA38003F30A2 /* CoreMLHelpers.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +34,7 @@
 		E6B59B2E1FBF808E00544FFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E6B59B311FBF808E00544FFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E6B59B331FBF808E00544FFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E6FCCE601FC0C757003F30A2 /* LogoClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = LogoClassifier.mlmodel; sourceTree = "<group>"; };
+		E6D0C6F81FC1550B00F30661 /* LogoClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = LogoClassifier.mlmodel; sourceTree = "<group>"; };
 		E6FCCE621FC0CA38003F30A2 /* CoreMLHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,7 +93,7 @@
 				E66665D31FBF9BF200342BBC /* RectangleExtractor.swift */,
 				E62F37E01FBFC1E900C25A25 /* TVChannelLogoClassifier.swift */,
 				E6FCCE621FC0CA38003F30A2 /* CoreMLHelpers.swift */,
-				E6FCCE601FC0C757003F30A2 /* LogoClassifier.mlmodel */,
+				E6D0C6F81FC1550B00F30661 /* LogoClassifier.mlmodel */,
 				E6B59B2B1FBF808E00544FFF /* Main.storyboard */,
 				E66665D11FBF8A2300342BBC /* InfoView.storyboard */,
 				E6B59B2E1FBF808E00544FFF /* Assets.xcassets */,
@@ -138,7 +138,7 @@
 				TargetAttributes = {
 					E6B59B231FBF808E00544FFF = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -231,8 +231,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6B59B2A1FBF808E00544FFF /* ViewFinderViewController.swift in Sources */,
-				E6FCCE611FC0C757003F30A2 /* LogoClassifier.mlmodel in Sources */,
 				E62F37E11FBFC1E900C25A25 /* TVChannelLogoClassifier.swift in Sources */,
+				E6D0C6F91FC1550C00F30661 /* LogoClassifier.mlmodel in Sources */,
 				E66665D41FBF9BF200342BBC /* RectangleExtractor.swift in Sources */,
 				E6B59B281FBF808E00544FFF /* AppDelegate.swift in Sources */,
 				E6FCCE631FC0CA38003F30A2 /* CoreMLHelpers.swift in Sources */,
@@ -309,7 +309,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -360,7 +360,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -373,12 +373,15 @@
 			baseConfigurationReference = 10B37DC9024B6ED738FA51F8 /* Pods-TV Guide.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WCM2L8RG39;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "TV Guide/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.penis.TV-Guide";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hackatum-tv-guide.TV-Guide";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -389,12 +392,15 @@
 			baseConfigurationReference = 959A3A4887B9555FFD9F3574 /* Pods-TV Guide.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WCM2L8RG39;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "TV Guide/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.penis.TV-Guide";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hackatum-tv-guide.TV-Guide";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
